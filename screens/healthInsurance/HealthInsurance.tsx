@@ -27,7 +27,7 @@ const HealthInsurance = () => {
   }
 
   if (error) {
-    return <Text>Error Loading data</Text>;
+    return <Text>Error Fetching Insurance Plans</Text>;
   }
 
   const monthlyPlans = data?.insurancePlans?.filter(
