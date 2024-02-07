@@ -30,7 +30,6 @@ const HealthInsurance = () => {
     return <Text>Error Loading data</Text>;
   }
 
-  console.log(data?.insurancePlans[0], 'data');
   const monthlyPlans = data?.insurancePlans?.filter(
     plan => plan.package === 'monthly',
   );
@@ -49,9 +48,11 @@ const HealthInsurance = () => {
 
         <Text style={styles.headerText}>Health insurance</Text>
       </View>
+
       <Text style={styles.subText}>
         Subscribe to your preferred insurance packages
       </Text>
+
       <View style={styles.tabContainer}>
         <TouchableOpacity
           style={[
@@ -61,6 +62,7 @@ const HealthInsurance = () => {
           onPress={() => handleTabPress('Monthly')}>
           <Text>Monthly</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={[
             styles.tabButton,
@@ -70,6 +72,7 @@ const HealthInsurance = () => {
           <Text>Annually</Text>
         </TouchableOpacity>
       </View>
+
       <View style={styles.tabView}>
         {selectedTab === 'Monthly' && (
           <>
@@ -95,6 +98,7 @@ const HealthInsurance = () => {
             )}
           </>
         )}
+
         {selectedTab === 'Annually' && (
           <>
             {yearlyPlans?.map(

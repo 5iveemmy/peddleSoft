@@ -8,6 +8,7 @@ const Packages = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <Text style={styles.text}>Packages</Text>
+
       <View style={styles.packagesContainer}>
         {packageData.map(
           ({icon, borderColor, bgColor, title, description, route}) => (
@@ -23,8 +24,10 @@ const Packages = () => {
           ),
         )}
       </View>
+
       <View style={styles.subscriptionContainer}>
         <Text style={styles.subscriptionText}>Current subscription</Text>
+
         <SubscriptionBox
           current={true}
           btnBgColor="#e2e4e6"
