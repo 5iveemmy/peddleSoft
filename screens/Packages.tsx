@@ -9,16 +9,19 @@ const Packages = () => {
     <SafeAreaView style={styles.safeArea}>
       <Text style={styles.text}>Packages</Text>
       <View style={styles.packagesContainer}>
-        {packageData.map(({icon, borderColor, bgColor, title, description}) => (
-          <PackageBox
-            key={title}
-            borderColor={borderColor}
-            bgColor={bgColor}
-            icon={icon}
-            title={title}
-            description={description}
-          />
-        ))}
+        {packageData.map(
+          ({icon, borderColor, bgColor, title, description, route}) => (
+            <PackageBox
+              key={title}
+              borderColor={borderColor}
+              bgColor={bgColor}
+              route={route}
+              icon={icon}
+              title={title}
+              description={description}
+            />
+          ),
+        )}
       </View>
       <View style={styles.subscriptionContainer}>
         <Text style={styles.subscriptionText}>Current subscription</Text>

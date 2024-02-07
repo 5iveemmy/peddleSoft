@@ -24,6 +24,7 @@ export const packageData = [
     icon: heart,
     borderColor: '#D4F9AC',
     bgColor: '#F4FDE7',
+    route: 'HealthInsurance',
   },
   {
     title: 'Consultation',
@@ -31,6 +32,7 @@ export const packageData = [
     icon: phone,
     borderColor: '#A7C9FD',
     bgColor: '#E6F0FE',
+    route: 'Packages',
   },
   {
     title: 'Prescription',
@@ -38,5 +40,6 @@ export const packageData = [
     icon: heartBeat,
     borderColor: '#FFE89E',
     bgColor: '#FFFAE5',
+    route: 'Packages',
   },
 ];
