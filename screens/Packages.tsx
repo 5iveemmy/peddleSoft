@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import PackageBox from '../components/PackageBox';
 import {packageData} from './data';
+import SubscriptionBox from '../components/SubsriptionBox';
 
 const Packages = () => {
   return (
@@ -10,6 +11,7 @@ const Packages = () => {
       <View style={styles.packagesContainer}>
         {packageData.map(({icon, borderColor, bgColor, title, description}) => (
           <PackageBox
+            key={title}
             borderColor={borderColor}
             bgColor={bgColor}
             icon={icon}
@@ -17,6 +19,14 @@ const Packages = () => {
             description={description}
           />
         ))}
+      </View>
+      <View style={styles.subscriptionContainer}>
+        <Text style={styles.subscriptionText}>Current subscription</Text>
+        <SubscriptionBox
+          buttonText="Renew"
+          bgColor="#EEFCF8"
+          borderColor="#ADEFDF"
+        />
       </View>
     </SafeAreaView>
   );
@@ -29,6 +39,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'GeneralSans-Bold',
     fontWeight: '700',
+  },
+  subscriptionContainer: {
+    paddingTop: 50,
+  },
+  subscriptionText: {
+    fontWeight: '600',
+    fontSize: 16,
+    paddingBottom: 12,
   },
   packagesContainer: {
     paddingTop: 30,

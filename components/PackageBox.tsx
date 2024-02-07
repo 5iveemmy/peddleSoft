@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     height: 105,
     justifyContent: 'space-between',
     borderRadius: 12,
-    padding: 14,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontWeight: '600',
-    fontSize: 20,
+    fontSize: 16,
   },
   subText: {
     paddingTop: 3,
