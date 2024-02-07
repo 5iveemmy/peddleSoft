@@ -6,6 +6,8 @@ interface Props {
   bgColor: string;
   borderColor: string;
   buttonText: string;
+  price: string;
+  description: string;
 }
 
 const SubscriptionType = () => {
@@ -21,7 +23,13 @@ const SubscriptionType = () => {
   );
 };
 
-const SubscriptionBox = ({bgColor, borderColor, buttonText}: Props) => {
+const SubscriptionBox = ({
+  bgColor,
+  borderColor,
+  buttonText,
+  price,
+  description,
+}: Props) => {
   return (
     <View
       style={[
@@ -29,11 +37,9 @@ const SubscriptionBox = ({bgColor, borderColor, buttonText}: Props) => {
         {backgroundColor: bgColor, borderColor: borderColor},
       ]}>
       <SubscriptionType />
-      <Text style={styles.price}>N 6,000</Text>
+      <Text style={styles.price}>N {price}</Text>
       <View style={styles.subContainer}>
-        <Text style={styles.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
+        <Text style={styles.description}>{description}</Text>
         <View style={styles.daysContainer}>
           <Text style={styles.days}>Days left</Text>
           <Text style={styles.daysCount}>25</Text>

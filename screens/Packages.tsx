@@ -26,6 +26,8 @@ const Packages = () => {
       <View style={styles.subscriptionContainer}>
         <Text style={styles.subscriptionText}>Current subscription</Text>
         <SubscriptionBox
+          price="2000"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           buttonText="Renew"
           bgColor="#EEFCF8"
           borderColor="#ADEFDF"

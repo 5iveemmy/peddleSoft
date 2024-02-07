@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import {SvgXml} from 'react-native-svg';
+import SubscriptionBox from '../components/SubsriptionBox';
 
 const xml = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.97501 4.94168L2.91667 10L7.97501 15.0583" stroke="#525C76" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,6 +54,17 @@ const HealthInsurance = () => {
           <Text>Annually</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.tabView}>
+        {selectedTab === 'Monthly' && (
+          <SubscriptionBox
+            price="2000"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            buttonText="Renew"
+            bgColor="#EEFCF8"
+            borderColor="#ADEFDF"
+          />
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -66,6 +78,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     borderRadius: 8,
+  },
+  tabView: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 24,
+    paddingTop: 20,
   },
   selectedTab: {
     backgroundColor: '#CACDD5',
