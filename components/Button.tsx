@@ -4,12 +4,16 @@ import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 interface Props {
   handlePress: () => void;
   text: string;
+  bgColor: string;
+  textColor?: string;
 }
 
-const Button = ({handlePress, text}: Props) => {
+const Button = ({handlePress, text, bgColor, textColor = '#b2b7c2'}: Props) => {
   return (
-    <TouchableOpacity style={[styles.buttonContainer]} onPress={handlePress}>
-      <Text style={styles.buttonText}>{text}</Text>
+    <TouchableOpacity
+      style={[styles.buttonContainer, {backgroundColor: bgColor}]}
+      onPress={handlePress}>
+      <Text style={[styles.buttonText, {color: textColor}]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -17,7 +21,6 @@ const Button = ({handlePress, text}: Props) => {
 const styles = StyleSheet.create({
   buttonContainer: {
     borderRadius: 3,
-    backgroundColor: '#e2e4e6',
     paddingHorizontal: 12,
     paddingVertical: 6,
     justifyContent: 'center',
@@ -27,7 +30,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '600',
     fontSize: 12,
-    color: '#b2b7c2',
     textAlign: 'center',
   },
 });
