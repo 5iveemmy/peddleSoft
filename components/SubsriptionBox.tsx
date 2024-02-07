@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import Button from './Button';
+import {subscriptionBoxstyles} from './styles';
 
 interface Props {
   bgColor: string;
@@ -8,17 +9,48 @@ interface Props {
   buttonText: string;
   price: string;
   description: string;
+  packageName?: string;
+  current?: boolean;
+  name: string;
+  btnBgColor: string;
+  btnTextColor?: string;
+  subTypeBoxBgColor: string;
+  subTextColor: string;
 }
 
-const SubscriptionType = () => {
+interface SubscriptionTypeProps {
+  current?: boolean;
+  name: string;
+  subTypeBoxBgColor: string;
+  subTextColor: string;
+}
+
+const SubscriptionType = ({
+  current,
+  name,
+  subTypeBoxBgColor,
+  subTextColor,
+}: SubscriptionTypeProps) => {
   return (
-    <View style={styles.subTypeContainer}>
-      <View style={styles.subscriptionTypeBox}>
-        <Text style={styles.subscriptionText}>STANDARD</Text>
+    <View style={subscriptionBoxstyles.subTypeContainer}>
+      <View
+        style={[
+          subscriptionBoxstyles.subscriptionTypeBox,
+          {backgroundColor: subTypeBoxBgColor},
+        ]}>
+        <Text
+          style={[
+            subscriptionBoxstyles.subscriptionText,
+            {color: subTextColor},
+          ]}>
+          {name.toUpperCase()}
+        </Text>
       </View>
-      <View style={styles.monthlyContainer}>
-        <Text style={styles.monthlyText}>Monthly</Text>
-      </View>
+      {current && (
+        <View style={subscriptionBoxstyles.monthlyContainer}>
+          <Text style={subscriptionBoxstyles.monthlyText}>Monthly</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -29,107 +61,47 @@ const SubscriptionBox = ({
   buttonText,
   price,
   description,
+  packageName,
+  name,
+  current,
+  btnBgColor,
+  btnTextColor,
+  subTypeBoxBgColor,
+  subTextColor,
 }: Props) => {
   return (
     <View
       style={[
-        styles.container,
+        subscriptionBoxstyles.container,
         {backgroundColor: bgColor, borderColor: borderColor},
       ]}>
-      <SubscriptionType />
-      <Text style={styles.price}>N {price}</Text>
-      <View style={styles.subContainer}>
-        <Text style={styles.description}>{description}</Text>
-        <View style={styles.daysContainer}>
-          <Text style={styles.days}>Days left</Text>
-          <Text style={styles.daysCount}>25</Text>
-        </View>
+      <SubscriptionType
+        subTypeBoxBgColor={subTypeBoxBgColor}
+        subTextColor={subTextColor}
+        name={name}
+        current={current}
+      />
+      <View style={subscriptionBoxstyles.priceContainer}>
+        <Text style={subscriptionBoxstyles.price}>N {price}</Text>
+        {packageName && <Text>/{packageName}</Text>}
       </View>
-      <Button text={buttonText} handlePress={() => {}} />
+      <View style={subscriptionBoxstyles.subContainer}>
+        <Text style={subscriptionBoxstyles.description}>{description}</Text>
+        {current && (
+          <View style={subscriptionBoxstyles.daysContainer}>
+            <Text style={subscriptionBoxstyles.days}>Days left</Text>
+            <Text style={subscriptionBoxstyles.daysCount}>25</Text>
+          </View>
+        )}
+      </View>
+      <Button
+        textColor={btnTextColor}
+        bgColor={btnBgColor}
+        text={buttonText}
+        handlePress={() => {}}
+      />
     </View>
   );
 };
 
 export default SubscriptionBox;
-
-const styles = StyleSheet.create({
-  subTypeContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 8,
-  },
-  monthlyContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffff',
-    borderWidth: 1,
-    borderColor: '#8c93a3',
-    borderStyle: 'solid',
-    height: 20,
-    width: 72,
-    borderRadius: 3,
-    paddingVertical: 2,
-    paddingHorizontal: 8,
-  },
-  monthlyText: {
-    color: '#525c76',
-    fontWeight: '600',
-    fontSize: 10,
-  },
-  subscriptionTypeBox: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0F1D40',
-    borderRadius: 3,
-    width: 99,
-    paddingVertical: 2,
-    paddingHorizontal: 8,
-    height: 23,
-  },
-  subscriptionText: {
-    color: 'white',
-    fontWeight: '600',
-    fontSize: 12,
-  },
-  price: {
-    fontWeight: '700',
-    fontSize: 24,
-  },
-  container: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    width: '100%',
-    height: 'auto',
-    borderRadius: 12,
-    padding: 10,
-    flexDirection: 'column',
-  },
-  description: {
-    fontSize: 12,
-    fontWeight: '500',
-    width: 230,
-  },
-  subContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'baseline',
-    marginBottom: 6,
-  },
-  days: {
-    fontSize: 10,
-    fontWeight: '500',
-    color: '#8C93A3',
-  },
-  daysCount: {
-    fontSize: 10,
-    fontWeight: '700',
-  },
-  daysContainer: {
-    display: 'flex',
-    gap: 4,
-    flexDirection: 'row',
-  },
-});
